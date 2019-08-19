@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Networking" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yj9-Ek-T9i">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Download an Image" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QXu-Gv-zEg">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MFB-Di-ttv">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <connections>
+                                    <action selector="getImagePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dd7-e5-OiY"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qVd-B2-NSn">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qVd-B2-NSn" firstAttribute="centerX" secondItem="Yj9-Ek-T9i" secondAttribute="centerX" id="0c6-Db-aa7"/>
+                            <constraint firstItem="Yj9-Ek-T9i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2mC-hS-Wbs"/>
+                            <constraint firstItem="Yj9-Ek-T9i" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-44" id="9vO-Ig-Djg"/>
+                            <constraint firstAttribute="trailing" secondItem="QXu-Gv-zEg" secondAttribute="trailing" id="9vX-GB-KXk"/>
+                            <constraint firstItem="qVd-B2-NSn" firstAttribute="centerY" secondItem="Yj9-Ek-T9i" secondAttribute="centerY" id="Ggh-V6-XjW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MFB-Di-ttv" secondAttribute="trailing" id="GyP-V5-S8x"/>
+                            <constraint firstItem="QXu-Gv-zEg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LHb-mp-BKc"/>
+                            <constraint firstItem="QXu-Gv-zEg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="LnW-tj-Epq"/>
+                            <constraint firstItem="MFB-Di-ttv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="RrW-NL-GdO"/>
+                            <constraint firstItem="MFB-Di-ttv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="SHm-yY-gPi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MFB-Di-ttv" secondAttribute="bottom" id="Zdb-F5-VrA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Yj9-Ek-T9i" secondAttribute="bottom" constant="-34" id="g1H-ld-uRY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Yj9-Ek-T9i" secondAttribute="trailing" id="ofQ-iT-4bp"/>
+                            <constraint firstAttribute="bottom" secondItem="QXu-Gv-zEg" secondAttribute="bottom" id="vsT-RK-0VQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="qVd-B2-NSn" id="vHQ-ME-TwM"/>
+                        <outlet property="getImageButton" destination="MFB-Di-ttv" id="oh4-C4-0d8"/>
+                        <outlet property="imageView" destination="Yj9-Ek-T9i" id="8wJ-56-4rU"/>
+                        <outlet property="label" destination="QXu-Gv-zEg" id="v7T-BF-iL3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="129.24107142857142"/>
+        </scene>
+    </scenes>
+</document>
