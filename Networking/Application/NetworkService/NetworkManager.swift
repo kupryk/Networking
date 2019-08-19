@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  NetworkManager.swift
 //  Networking
 //
 //  Created by Nikita Kuprik on 8/19/19.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    @IBAction func getRequest(_ sender: Any) {
-        guard let url = URL(string: "http://jsonplaceholder.typicode.com/albums") else { return }
+class NetworkManager {
+    
+    static func getRequest(url: String) {
+        guard let url = URL(string: url) else { return }
         
         let session = URLSession.shared
         session.dataTask(with: url) { (data, response, error) in
@@ -32,8 +32,8 @@ class ViewController: UIViewController {
         }.resume()
     }
     
-    @IBAction func postRequest(_ sender: Any) {
-        guard let url = URL(string: "http://jsonplaceholder.typicode.com/albums") else { return }
+    static func postRequest(url: String) {
+        guard let url = URL(string: url) else { return }
         
         let userData = ["Course": "Networking", "Lesson": "GET and POST requests"]
         
@@ -56,8 +56,40 @@ class ViewController: UIViewController {
                 print(error)
             }
         }.resume()
-       
     }
-
+    
+    static func downloadImage(url: String, completion: @escaping (_ image: UIImage) -> ()) {
+        
+        guard let url = URL(string: url) else { return }
+        
+        let session = URLSession.shared
+        
+        session.dataTask(with: url) { (data, response, error) in
+            if let data = data, let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    completion(image)
+                }
+            }
+        }.resume()
+    }
+    
+    static func fetchData(url: String, completion: @escaping (_ photos: [Photo]) -> ()) {
+        
+        guard let url = URL(string: url) else { return }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            guard let data = data else { return }
+            
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let photos = try decoder.decode([Photo].self, from: data)
+                completion(photos)
+            } catch let error {
+                print("Error serialization json" , error)
+            }
+            
+        }.resume()
+    }
 }
-
