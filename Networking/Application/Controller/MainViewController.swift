@@ -17,6 +17,7 @@ enum Actions: String, CaseIterable {
 }
 
 private let url = "http://jsonplaceholder.typicode.com/albums"
+private let uploadImage = "https://api.imgur.com/3/image"
 
 class MainViewController: UICollectionViewController {
     
@@ -45,8 +46,7 @@ class MainViewController: UICollectionViewController {
         case .ourPhotos:
             performSegue(withIdentifier: "showPhotos", sender: self)
         case .uploadImage:
-            print("Upload Image")
+            NetworkManager.uploadImage(url: uploadImage)
         }
     }
-    
 }
